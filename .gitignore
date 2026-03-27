@@ -36,6 +36,14 @@ yarn-error.log*
 # vercel
 .vercel
 
+# agent skills (installed locally, not committed)
+.agents/
+.claude/skills/
+.goose/
+.kiro/
+.codex/
+.windsurf/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -1,0 +1,67 @@
+// GraphQL mutations for Shopify Storefront API cart operations
+
+import { CART_FRAGMENT } from "./queries";
+
+export const CART_CREATE_MUTATION = /* GraphQL */ `
+  mutation CartCreate($input: CartInput!) {
+    cartCreate(input: $input) {
+      cart {
+        ...CartFields
+      }
+      userErrors {
+        field
+        message
+        code
+      }
+    }
+  }
+  ${CART_FRAGMENT}
+`;
+
+export const CART_LINES_ADD_MUTATION = /* GraphQL */ `
+  mutation CartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+    cartLinesAdd(cartId: $cartId, lines: $lines) {
+      cart {
+        ...CartFields
+      }
+      userErrors {
+        field
+        message
+        code
+      }
+    }
+  }
+  ${CART_FRAGMENT}
+`;
+
+export const CART_LINES_UPDATE_MUTATION = /* GraphQL */ `
+  mutation CartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+    cartLinesUpdate(cartId: $cartId, lines: $lines) {
+      cart {
+        ...CartFields
+      }
+      userErrors {
+        field
+        message
+        code
+      }
+    }
+  }
+  ${CART_FRAGMENT}
+`;
+
+export const CART_LINES_REMOVE_MUTATION = /* GraphQL */ `
+  mutation CartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+    cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+      cart {
+        ...CartFields
+      }
+      userErrors {
+        field
+        message
+        code
+      }
+    }
+  }
+  ${CART_FRAGMENT}
+`;

@@ -1,65 +1,303 @@
-import Image from "next/image";
+import Link from "next/link";
+import { OrgSchema } from "@/components/schema/org-schema";
+import { ProductCard } from "@/components/product/product-card";
+import { products, getProductsBySeries } from "@/data/products";
+import type { Product } from "@/data/products";
+import { companyInfo, aboutPage } from "@/data/content";
 
-export default function Home() {
+const FEATURED_HANDLES = [
+  "silicon-mould-release-agent",
+  "silicon-anti-spatter",
+  "protektor-conformal-coating",
+  "electrical-contact-cleaner-500ml",
+  "riders-united-dashboard-polish",
+  "5201-ptfe-enhanced-chain-lubricant-spray-riders-united",
+  "lighter-gas-refill-can-550ml-with-refill-adapter-micron-aerosols\u00ae-for-lighters-jeweller-torch-pack-of-2",
+  "ceramic-anti-spatter",
+];
+
+const TRUST_BADGES = [
+  "ISO 9001:2015",
+  "ISO 45001:2018",
+  "Since 1989",
+  "34+ Products",
+  "6 Verticals",
+  "Made in India",
+];
+
+const VERTICALS = [
+  {
+    series: "S1000",
+    title: "Plastic Moulding",
+    handle: "plastic-moulding",
+  },
+  {
+    series: "S2000",
+    title: "Welding & Fabrication",
+    handle: "industrial-welding-fabrication",
+  },
+  {
+    series: "S3000",
+    title: "Electronics Protection",
+    handle: "electronics",
+  },
+  {
+    series: "S4000",
+    title: "Essentials",
+    handle: "essentials",
+  },
+  {
+    series: "S5000",
+    title: "Automotive",
+    handle: "automotive-care-performance",
+  },
+  {
+    series: "S6000",
+    title: "Specialty Products",
+    handle: "speciality-products",
+  },
+];
+
+const OEM_STATS = [
+  { value: "35+", label: "Years" },
+  { value: "In-House", label: "R&D" },
+  { value: "Flexible", label: "MOQ" },
+  { value: "ISO", label: "Certified" },
+];
+
+export default function HomePage() {
+  const featuredProducts: Product[] = FEATURED_HANDLES.reduce<Product[]>(
+    (acc, handle) => {
+      const p = products.find((prod) => prod.handle === handle);
+      if (p) acc.push(p);
+      return acc;
+    },
+    []
+  );
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      <OrgSchema />
+
+      {/* ===== 1. HERO ===== */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
+        {/* faint grid overlay */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+        <div className="relative mx-auto max-w-[1600px] px-6 py-24 sm:py-32 lg:px-12 lg:py-40">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl font-bold uppercase tracking-wider text-white sm:text-5xl lg:text-6xl">
+              Specialty Chemicals
+              <br />
+              &amp; Aerosol Solutions
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
+              Trusted by manufacturers across India since 1989. ISO 9001 &amp;
+              ISO 45001 certified.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                href="/products"
+                className="rounded-none bg-white px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-[#121212] transition-colors hover:bg-gray-100"
+              >
+                Explore Products
+              </Link>
+              <Link
+                href="/get-quote"
+                className="rounded-none bg-[#e10000] px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#c00]"
+              >
+                Get OEM Quote
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* ===== 2. TRUST BAR ===== */}
+      <section className="bg-[#f5f5f5]">
+        <div className="mx-auto max-w-[1600px] px-6 py-5 lg:px-12">
+          <div className="flex items-center justify-center gap-0 overflow-x-auto scrollbar-none">
+            {TRUST_BADGES.map((badge, i) => (
+              <div key={badge} className="flex shrink-0 items-center">
+                {i > 0 && (
+                  <span className="mx-4 h-4 w-px bg-[#ccc] sm:mx-6" />
+                )}
+                <span className="whitespace-nowrap text-xs font-bold uppercase tracking-wider text-[#4d4d4d] sm:text-sm">
+                  {badge}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ===== 3. INDUSTRY VERTICALS ===== */}
+      <section className="bg-white py-20 lg:py-28">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <h2 className="text-center text-3xl font-bold uppercase tracking-wider text-[#121212] sm:text-4xl">
+            Solutions for Every Industry
+          </h2>
+          <div className="mt-14 grid gap-px bg-gray-200 sm:grid-cols-2 lg:grid-cols-3">
+            {VERTICALS.map((v) => {
+              const count = getProductsBySeries(v.series).length;
+              return (
+                <Link
+                  key={v.series}
+                  href={`/collections/${v.handle}`}
+                  className="group relative flex flex-col bg-white"
+                >
+                  {/* Image placeholder area */}
+                  <div className="flex aspect-[16/9] items-center justify-center bg-[#121212]">
+                    <span className="text-3xl font-bold uppercase tracking-wider text-white/20">
+                      {v.series}
+                    </span>
+                  </div>
+                  {/* Card info */}
+                  <div className="border border-t-0 border-gray-200 p-5">
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#0099ff]">
+                      {v.series}
+                    </p>
+                    <h3 className="mt-1 text-lg font-bold text-[#121212] transition-colors group-hover:text-[#0099ff]">
+                      {v.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-[#4d4d4d]">
+                      {count} product{count !== 1 ? "s" : ""}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 4. FEATURED PRODUCTS ===== */}
+      <section className="bg-[#f5f5f5] py-20 lg:py-28">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <h2 className="text-3xl font-bold uppercase tracking-wider text-[#121212] sm:text-4xl">
+            Popular Products
+          </h2>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.handle} product={product} />
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link
+              href="/products"
+              className="inline-block rounded-none border-2 border-[#121212] px-8 py-3 text-sm font-bold uppercase tracking-wider text-[#121212] transition-colors hover:bg-[#121212] hover:text-white"
+            >
+              View All Products
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 5. OEM / R&D SECTION ===== */}
+      <section className="bg-[#0a0a0a] py-20 lg:py-28">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold uppercase tracking-wider text-white sm:text-4xl">
+              Custom Formulation &amp; OEM Manufacturing
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-white/60">
+              Our in-house R&amp;D team develops bespoke aerosol and chemical
+              formulations tailored to your exact industrial requirements.
+              From prototype to full-scale production, we partner with you at
+              every stage.
+            </p>
+          </div>
+          <div className="mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4">
+            {OEM_STATS.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="text-3xl font-bold tracking-wider text-white sm:text-4xl">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-sm font-bold uppercase tracking-wider text-white/40">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link
+              href="/solutions/oem-custom-formulation"
+              className="inline-block rounded-none bg-[#e10000] px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#c00]"
+            >
+              Request OEM Quote
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 6. DEALER CTA ===== */}
+      <section className="bg-white py-20 lg:py-28">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <div className="border border-gray-200 px-8 py-14 text-center lg:px-16">
+            <h2 className="text-3xl font-bold uppercase tracking-wider text-[#121212] sm:text-4xl">
+              Become a Micron Aerosols Dealer
+            </h2>
+            <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-3">
+              {(
+                [
+                  "Competitive Margins",
+                  "Exclusive Territory",
+                  "Marketing Support",
+                ] as const
+              ).map((benefit) => (
+                <div key={benefit} className="text-center">
+                  <p className="text-lg font-bold uppercase tracking-wider text-[#121212]">
+                    {benefit}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10">
+              <Link
+                href="/become-a-dealer"
+                className="inline-block rounded-none bg-[#0099ff] px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#007acc]"
+              >
+                Apply Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 7. ABOUT / TRUST ===== */}
+      <section className="bg-[#f5f5f5] py-20 lg:py-28">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold uppercase tracking-wider text-[#121212] sm:text-4xl">
+              About {companyInfo.name}
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-[#4d4d4d]">
+              Founded in {companyInfo.foundedYear} in Sangamner, Maharashtra,{" "}
+              {companyInfo.legalName} has grown from a single manufacturing unit
+              into a trusted name across six industrial verticals. Led by{" "}
+              {aboutPage.team[0].name} ({aboutPage.team[0].title}), alongside{" "}
+              {aboutPage.team[1].name} and {aboutPage.team[2].name}, our
+              leadership brings over 75 years of combined experience from
+              institutions like BITS Pilani, IIT Kharagpur, and Politecnico Di
+              Milano.
+            </p>
+            <div className="mt-8">
+              <Link
+                href="/about"
+                className="inline-block rounded-none border-2 border-[#121212] px-8 py-3 text-sm font-bold uppercase tracking-wider text-[#121212] transition-colors hover:bg-[#121212] hover:text-white"
+              >
+                Learn More
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

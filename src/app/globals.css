@@ -2,25 +2,121 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #4d4d4d;
+  --color-primary: #0099ff;
+  --color-primary-dark: #1773b0;
+  --color-accent: #e10000;
+  --color-accent-hover: #c50000;
+  --color-heading: #121212;
+  --color-body: #4d4d4d;
+  --color-dark-bg: #0a0a0a;
+  --color-whatsapp: #25d366;
+  --color-border: #e5e5e5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-heading: var(--color-heading);
+  --color-body: var(--color-body);
+  --color-dark-bg: var(--color-dark-bg);
+  --color-whatsapp: var(--color-whatsapp);
+  --color-border: var(--color-border);
+  --font-sans: var(--font-montserrat);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base industrial typography */
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-body);
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+  letter-spacing: 0.06rem;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-heading);
+  font-weight: 700;
+  letter-spacing: 0.06rem;
+}
+
+/* Industrial reset: no rounded corners anywhere */
+*, *::before, *::after {
+  border-radius: 0 !important;
+}
+
+/* Industrial utility classes */
+.industrial-section {
+  width: 100%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dark-section {
+  background-color: var(--color-dark-bg);
+  color: #ffffff;
+}
+
+.dark-section h1,
+.dark-section h2,
+.dark-section h3,
+.dark-section h4,
+.dark-section h5,
+.dark-section h6 {
+  color: #ffffff;
+}
+
+/* Button base — squared, industrial */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  transition: background-color 150ms ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  transition: background-color 150ms ease;
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent-hover);
+}
+
+/* Full-bleed image utility */
+.img-full-bleed {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* WhatsApp pulse animation */
+@keyframes pulse-whatsapp {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
 }

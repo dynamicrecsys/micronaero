@@ -1,0 +1,185 @@
+import type { Metadata } from "next";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { ContactForm } from "@/components/forms/contact-form";
+import { contactInfo } from "@/data/content";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Get in touch with Micron Aerosols. Reach our team in Sangamner, Maharashtra for product inquiries, OEM requests, and technical support.",
+};
+
+const contactCards = [
+  {
+    title: "PHONE",
+    value: "+91 98220 36498",
+    href: "tel:+919822036498",
+    actionLabel: "CALL NOW",
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+      </svg>
+    ),
+    colorClass: "text-primary",
+    bgClass: "bg-blue-50",
+  },
+  {
+    title: "EMAIL",
+    value: "info@micronaero.com",
+    href: "mailto:info@micronaero.com",
+    actionLabel: "SEND EMAIL",
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+      </svg>
+    ),
+    colorClass: "text-primary",
+    bgClass: "bg-blue-50",
+  },
+  {
+    title: "WHATSAPP",
+    value: "Chat with us instantly",
+    href: WHATSAPP_NUMBER
+      ? `https://wa.me/${WHATSAPP_NUMBER}?text=Hi, I'd like to know more about Micron Aerosols products`
+      : "#",
+    actionLabel: "OPEN WHATSAPP",
+    icon: (
+      <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+    ),
+    colorClass: "text-whatsapp",
+    bgClass: "bg-green-50",
+    external: true,
+  },
+];
+
+export default function ContactPage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="bg-dark-bg px-4 py-24 text-center text-white md:py-32">
+        <div className="mx-auto max-w-[1600px]">
+          <h1 className="text-3xl font-bold uppercase tracking-wider md:text-4xl lg:text-5xl">
+            GET IN TOUCH
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-400">
+            Reach our team for product inquiries, OEM requests, technical support, or dealer partnerships.
+          </p>
+        </div>
+      </section>
+
+      {/* Contact Cards */}
+      <section className="mx-auto max-w-[1600px] px-4 py-16 lg:px-8">
+        <div className="grid gap-6 sm:grid-cols-3">
+          {contactCards.map((card) => (
+            <a
+              key={card.title}
+              href={card.href}
+              target={card.external ? "_blank" : undefined}
+              rel={card.external ? "noopener noreferrer" : undefined}
+              className="group flex flex-col items-center border border-border p-8 text-center transition-colors hover:border-primary"
+            >
+              <div className={`flex h-14 w-14 items-center justify-center ${card.bgClass} ${card.colorClass}`}>
+                {card.icon}
+              </div>
+              <h3 className="mt-4 text-sm font-bold uppercase tracking-wider text-heading">
+                {card.title}
+              </h3>
+              <p className="mt-1 text-sm text-[#4d4d4d]">{card.value}</p>
+              <span className={`mt-4 text-xs font-bold uppercase tracking-wider ${card.colorClass} group-hover:underline`}>
+                {card.actionLabel}
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* Form + Address */}
+      <section className="border-t border-border bg-[#fafafa] px-4 py-20">
+        <div className="mx-auto max-w-[1600px] lg:px-8">
+          <div className="grid gap-16 lg:grid-cols-2">
+            {/* Contact Form */}
+            <div>
+              <h2 className="text-2xl font-bold uppercase tracking-wider">SEND US A MESSAGE</h2>
+              <p className="mt-2 text-sm text-[#4d4d4d]">
+                Fill out the form and we will get back to you within 24 hours.
+              </p>
+              <div className="mt-8">
+                <ContactForm />
+              </div>
+            </div>
+
+            {/* Address & Info */}
+            <div>
+              <h2 className="text-2xl font-bold uppercase tracking-wider">OUR OFFICE</h2>
+              <div className="mt-6 space-y-6">
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-primary">ADDRESS</h3>
+                  <p className="mt-2 text-sm text-[#4d4d4d]">
+                    Micron Aerosols (Deepak Industries)<br />
+                    {contactInfo.address.street}<br />
+                    {contactInfo.address.locality}, {contactInfo.address.region} {contactInfo.address.postalCode}<br />
+                    India
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-primary">PHONE</h3>
+                  <a href="tel:+919822036498" className="mt-2 block text-sm text-[#4d4d4d] hover:text-primary">
+                    +91 98220 36498
+                  </a>
+                </div>
+
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-primary">EMAIL</h3>
+                  <a href="mailto:info@micronaero.com" className="mt-2 block text-sm text-[#4d4d4d] hover:text-primary">
+                    info@micronaero.com
+                  </a>
+                </div>
+
+                {WHATSAPP_NUMBER && (
+                  <div>
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-primary">WHATSAPP</h3>
+                    <a
+                      href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi, I'd like to know more about Micron Aerosols products`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 block text-sm text-whatsapp hover:underline"
+                    >
+                      Chat with us on WhatsApp
+                    </a>
+                  </div>
+                )}
+
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-primary">BUSINESS HOURS</h3>
+                  <p className="mt-2 text-sm text-[#4d4d4d]">
+                    Monday &ndash; Saturday: 9:00 AM &ndash; 6:00 PM IST<br />
+                    Sunday: Closed
+                  </p>
+                </div>
+              </div>
+
+              {/* Map Placeholder */}
+              <div className="mt-8 aspect-video w-full border border-border bg-gray-100">
+                <div className="flex h-full items-center justify-center text-center">
+                  <div>
+                    <svg className="mx-auto h-10 w-10 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                    <p className="mt-2 text-sm font-bold text-[#4d4d4d]">
+                      {contactInfo.address.full}
+                    </p>
+                    <p className="mt-1 text-xs text-gray-400">Map integration coming soon</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
