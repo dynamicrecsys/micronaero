@@ -5,7 +5,7 @@ import { trackWhatsAppClick } from "@/lib/analytics";
 import { addLeadScore } from "@/lib/lead-scoring";
 
 const WHATSAPP_URL =
-  "https://wa.me/91XXXXXXXXXX?text=Hi, I'd like to know more about Micron Aerosols products";
+  "https://wa.me/919822036498?text=Hi, I'd like to know more about Micron Aerosols products";
 
 export function WhatsAppButton() {
   const [visible, setVisible] = useState(false);

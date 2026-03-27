@@ -16,7 +16,7 @@ export function BulkQuoteCta({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center justify-center gap-2 rounded-md border-2 border-primary px-6 py-3 text-sm font-semibold text-primary hover:bg-primary hover:text-white transition-colors ${className}`}
+      className={`inline-flex items-center justify-center gap-2 border-2 border-primary px-6 py-3 text-sm font-semibold text-primary hover:bg-primary hover:text-white transition-colors ${className}`}
     >
       <svg
         className="h-4 w-4"

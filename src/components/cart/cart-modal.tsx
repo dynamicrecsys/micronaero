@@ -17,7 +17,7 @@ export function CartModal() {
       />
 
       {/* Slide-over panel */}
-      <div className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col bg-white shadow-xl">
+      <div className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col border-l border-gray-200 bg-white">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
           <h2 className="text-lg font-semibold text-gray-900">
@@ -25,7 +25,7 @@ export function CartModal() {
           </h2>
           <button
             onClick={() => setCartOpen(false)}
-            className="rounded-md p-2 text-gray-400 hover:text-gray-600 transition-colors"
+            className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
             aria-label="Close cart"
           >
             <svg
@@ -86,7 +86,7 @@ export function CartModal() {
               <p className="text-sm text-gray-500">Your cart is empty</p>
               <button
                 onClick={() => setCartOpen(false)}
-                className="mt-4 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-light transition-colors"
+                className="mt-4 bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-light transition-colors"
               >
                 Continue Shopping
               </button>
@@ -95,7 +95,7 @@ export function CartModal() {
             <ul className="divide-y divide-gray-200">
               {cart.lines.edges.map(({ node: item }) => (
                 <li key={item.id} className="flex gap-4 py-4">
-                  <div className="h-20 w-20 flex-shrink-0 rounded-md bg-gray-100">
+                  <div className="h-20 w-20 flex-shrink-0 bg-gray-100">
                     {item.merchandise.product.featuredImage ? (
                       <img
                         src={item.merchandise.product.featuredImage.url}
@@ -168,7 +168,7 @@ export function CartModal() {
             </div>
             <a
               href={cart.checkoutUrl}
-              className="block w-full rounded-md bg-accent px-4 py-3 text-center text-sm font-semibold text-white hover:bg-accent-hover transition-colors"
+              className="block w-full bg-accent px-4 py-3 text-center text-sm font-semibold text-white hover:bg-accent-hover transition-colors"
             >
               Proceed to Checkout
             </a>

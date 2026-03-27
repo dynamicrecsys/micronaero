@@ -25,7 +25,7 @@ export function ProductInfoTabsClient({
       label: "How to Use",
       content: (
         <div className="space-y-4">
-          <div className="rounded-none bg-gray-50 p-6">
+          <div className="bg-gray-50 p-6">
             <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-[#121212]">
               Application Instructions
             </h3>
@@ -37,8 +37,8 @@ export function ProductInfoTabsClient({
               <li>Allow adequate drying/curing time as specified in the TDS.</li>
             </ol>
           </div>
-          <div className="rounded-none border border-amber-200 bg-amber-50 p-4">
-            <p className="text-sm font-medium text-amber-800">
+          <div className="border border-[#0099ff]/20 bg-[#0099ff]/5 p-4">
+            <p className="text-sm font-medium text-[#121212]">
               Safety Notice: Always use in well-ventilated areas. Refer to the
               Safety Data Sheet for complete handling instructions.
             </p>
@@ -51,7 +51,7 @@ export function ProductInfoTabsClient({
       label: "FAQ",
       content: (
         <div className="space-y-4">
-          <div className="rounded-none border border-gray-200 p-4">
+          <div className="border border-gray-200 p-4">
             <h4 className="text-sm font-bold text-[#121212]">
               What is the shelf life?
             </h4>
@@ -60,7 +60,7 @@ export function ProductInfoTabsClient({
               the date of manufacture when stored in recommended conditions.
             </p>
           </div>
-          <div className="rounded-none border border-gray-200 p-4">
+          <div className="border border-gray-200 p-4">
             <h4 className="text-sm font-bold text-[#121212]">
               Is bulk pricing available?
             </h4>
@@ -69,7 +69,7 @@ export function ProductInfoTabsClient({
               Contact us for a custom quote.
             </p>
           </div>
-          <div className="rounded-none border border-gray-200 p-4">
+          <div className="border border-gray-200 p-4">
             <h4 className="text-sm font-bold text-[#121212]">
               Do you offer custom formulations?
             </h4>

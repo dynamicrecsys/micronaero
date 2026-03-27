@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   collections,
@@ -50,20 +51,43 @@ export default async function CollectionPage({ params }: Props) {
   ];
 
   return (
+    <>
+      {/* Collection Hero Banner */}
+      {collection.image && (
+        <section className="relative h-48 sm:h-64 overflow-hidden">
+          <Image
+            src={collection.image}
+            alt={`${collection.title} collection`}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="relative flex h-full items-center justify-center">
+            <h1 className="text-3xl font-bold uppercase tracking-wider text-white md:text-4xl lg:text-5xl">
+              {collection.title}
+            </h1>
+          </div>
+        </section>
+      )}
+
     <div className="mx-auto max-w-[1600px] px-4 py-12 lg:px-8">
       <Breadcrumb items={breadcrumbItems} />
 
       {/* Collection Header */}
-      <div className="mt-4 mb-10">
-        <h1 className="text-3xl font-bold uppercase tracking-wider text-[#121212] md:text-4xl">
-          {collection.title}
-        </h1>
-        {collection.description && (
-          <p className="mt-4 max-w-2xl text-base text-[#4d4d4d]">
-            {collection.description}
-          </p>
-        )}
-      </div>
+      {!collection.image && (
+        <div className="mt-4 mb-10">
+          <h1 className="text-3xl font-bold uppercase tracking-wider text-[#121212] md:text-4xl">
+            {collection.title}
+          </h1>
+        </div>
+      )}
+      {collection.description && (
+        <p className="mb-10 max-w-2xl text-base text-[#4d4d4d]">
+          {collection.description}
+        </p>
+      )}
 
       {/* Product Grid */}
       {collectionProducts.length > 0 ? (
@@ -116,5 +140,6 @@ export default async function CollectionPage({ params }: Props) {
         </Link>
       </div>
     </div>
+    </>
   );
 }

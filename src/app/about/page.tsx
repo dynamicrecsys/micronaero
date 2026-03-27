@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { aboutPage, companyInfo, industries } from "@/data/content";
 
 export const metadata: Metadata = {
@@ -38,16 +39,25 @@ const capabilities = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-dark-bg px-4 py-24 text-center text-white md:py-32">
-        <div className="mx-auto max-w-[1600px]">
-          <p className="text-sm font-bold uppercase tracking-widest text-primary">
+      {/* Hero with background image */}
+      <section className="relative overflow-hidden min-h-[400px] sm:min-h-[500px] flex items-center justify-center text-center text-white">
+        <Image
+          src="https://micronaero.com/cdn/shop/files/HS_D.jpg?v=1770786087&width=3840"
+          alt="Micron Aerosols manufacturing facility"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/70" />
+        <div className="relative mx-auto max-w-[1600px] px-4 py-24 md:py-32">
+          <p className="text-sm font-bold uppercase tracking-widest text-[#0099ff]">
             EST. {companyInfo.foundedYear}
           </p>
           <h1 className="mt-6 text-3xl font-bold uppercase tracking-wider md:text-4xl lg:text-5xl">
             SPECIALTY CHEMICALS &amp; AEROSOL SOLUTIONS SINCE 1989
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-400">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
             Founded as Deepak Industries in Sangamner, Maharashtra, {companyInfo.name} has been
             at the forefront of industrial aerosol manufacturing in India for over three decades.
           </p>

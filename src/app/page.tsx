@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { OrgSchema } from "@/components/schema/org-schema";
 import { ProductCard } from "@/components/product/product-card";
 import { products, getProductsBySeries } from "@/data/products";
@@ -30,31 +31,43 @@ const VERTICALS = [
     series: "S1000",
     title: "Plastic Moulding",
     handle: "plastic-moulding",
+    image:
+      "https://micronaero.com/cdn/shop/collections/Plastic_Molding.png?v=1713864385",
   },
   {
     series: "S2000",
     title: "Welding & Fabrication",
     handle: "industrial-welding-fabrication",
+    image:
+      "https://micronaero.com/cdn/shop/collections/Welding_3x_57241829-db7f-4324-8fa7-6938e61227d5.png?v=1713866145",
   },
   {
     series: "S3000",
     title: "Electronics Protection",
     handle: "electronics",
+    image:
+      "https://micronaero.com/cdn/shop/collections/Electronics-min.png?v=1713866164",
   },
   {
     series: "S4000",
     title: "Essentials",
     handle: "essentials",
+    image:
+      "https://micronaero.com/cdn/shop/collections/Essentials_3x-min.png?v=1713866114",
   },
   {
     series: "S5000",
     title: "Automotive",
     handle: "automotive-care-performance",
+    image:
+      "https://micronaero.com/cdn/shop/collections/Automobile-min.png?v=1713866289",
   },
   {
     series: "S6000",
     title: "Specialty Products",
     handle: "speciality-products",
+    image:
+      "https://micronaero.com/cdn/shop/collections/Speciality-min.png?v=1713866131",
   },
 ];
 
@@ -80,16 +93,16 @@ export default function HomePage() {
       <OrgSchema />
 
       {/* ===== 1. HERO ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
-        {/* faint grid overlay */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
+      <section className="relative overflow-hidden min-h-[500px] sm:min-h-[600px] lg:min-h-[700px]">
+        <Image
+          src="https://micronaero.com/cdn/shop/files/HS_D.jpg?v=1770786087&width=3840"
+          alt="Micron Aerosols industrial specialty chemicals and aerosol solutions"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
         />
+        <div className="absolute inset-0 bg-black/60" />
         <div className="relative mx-auto max-w-[1600px] px-6 py-24 sm:py-32 lg:px-12 lg:py-40">
           <div className="max-w-3xl">
             <h1 className="text-4xl font-bold uppercase tracking-wider text-white sm:text-5xl lg:text-6xl">
@@ -97,7 +110,7 @@ export default function HomePage() {
               <br />
               &amp; Aerosol Solutions
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
               Trusted by manufacturers across India since 1989. ISO 9001 &amp;
               ISO 45001 certified.
             </p>
@@ -152,9 +165,17 @@ export default function HomePage() {
                   href={`/collections/${v.handle}`}
                   className="group relative flex flex-col bg-white"
                 >
-                  {/* Image placeholder area */}
-                  <div className="flex aspect-[16/9] items-center justify-center bg-[#121212]">
-                    <span className="text-3xl font-bold uppercase tracking-wider text-white/20">
+                  {/* Collection image */}
+                  <div className="relative aspect-[16/9] overflow-hidden bg-[#121212]">
+                    <Image
+                      src={v.image}
+                      alt={`${v.title} — ${v.series} series industrial products`}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-black/40 transition-colors group-hover:bg-black/30" />
+                    <span className="absolute bottom-4 left-4 text-2xl font-bold uppercase tracking-wider text-white/90">
                       {v.series}
                     </span>
                   </div>
@@ -200,13 +221,21 @@ export default function HomePage() {
       </section>
 
       {/* ===== 5. OEM / R&D SECTION ===== */}
-      <section className="bg-[#0a0a0a] py-20 lg:py-28">
-        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+      <section className="relative overflow-hidden py-20 lg:py-28">
+        <Image
+          src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1600&q=80&auto=format&fit=crop"
+          alt="Industrial manufacturing facility"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/75" />
+        <div className="relative mx-auto max-w-[1600px] px-6 lg:px-12">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold uppercase tracking-wider text-white sm:text-4xl">
               Custom Formulation &amp; OEM Manufacturing
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-white/60">
+            <p className="mt-6 text-lg leading-relaxed text-white/70">
               Our in-house R&amp;D team develops bespoke aerosol and chemical
               formulations tailored to your exact industrial requirements.
               From prototype to full-scale production, we partner with you at
@@ -219,7 +248,7 @@ export default function HomePage() {
                 <p className="text-3xl font-bold tracking-wider text-white sm:text-4xl">
                   {stat.value}
                 </p>
-                <p className="mt-1 text-sm font-bold uppercase tracking-wider text-white/40">
+                <p className="mt-1 text-sm font-bold uppercase tracking-wider text-white/50">
                   {stat.label}
                 </p>
               </div>

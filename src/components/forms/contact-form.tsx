@@ -51,12 +51,12 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-green-200 bg-green-50 p-8 text-center">
-        <svg className="mx-auto h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+      <div className="border border-[#0099ff]/20 bg-[#0099ff]/5 p-8 text-center">
+        <svg className="mx-auto h-12 w-12 text-[#0099ff]" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <h3 className="mt-4 text-lg font-semibold text-green-800">Message Sent</h3>
-        <p className="mt-2 text-sm text-green-700">Thank you for reaching out. We will respond within 24 hours.</p>
+        <h3 className="mt-4 text-lg font-semibold text-[#121212]">Message Sent</h3>
+        <p className="mt-2 text-sm text-[#4d4d4d]">Thank you for reaching out. We will respond within 24 hours.</p>
       </div>
     );
   }
@@ -65,23 +65,23 @@ export function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label htmlFor="contact-name" className="block text-sm font-semibold text-gray-900">Name *</label>
-        <input type="text" id="contact-name" name="name" required className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+        <input type="text" id="contact-name" name="name" required className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-email" className="block text-sm font-semibold text-gray-900">Email *</label>
-          <input type="email" id="contact-email" name="email" required className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+          <input type="email" id="contact-email" name="email" required className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
         </div>
         <div>
           <label htmlFor="contact-phone" className="block text-sm font-semibold text-gray-900">Phone</label>
-          <input type="tel" id="contact-phone" name="phone" className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+          <input type="tel" id="contact-phone" name="phone" className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
         </div>
       </div>
 
       <div>
         <label htmlFor="contact-subject" className="block text-sm font-semibold text-gray-900">Subject</label>
-        <select id="contact-subject" name="subject" className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary">
+        <select id="contact-subject" name="subject" className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary">
           <option value="">Select a subject</option>
           {SUBJECT_OPTIONS.map((s) => (
             <option key={s} value={s}>{s}</option>
@@ -91,7 +91,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="contact-message" className="block text-sm font-semibold text-gray-900">Message *</label>
-        <textarea id="contact-message" name="message" required rows={5} className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+        <textarea id="contact-message" name="message" required rows={5} className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
       </div>
 
       {status === "error" && (
@@ -101,7 +101,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="rounded-md bg-accent px-8 py-3 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover transition-colors disabled:opacity-50"
+        className="bg-accent px-8 py-3 text-sm font-semibold text-white hover:bg-accent-hover transition-colors disabled:opacity-50"
       >
         {status === "loading" ? "Sending..." : "Send Message"}
       </button>

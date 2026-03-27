@@ -54,12 +54,12 @@ export function DealerForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-green-200 bg-green-50 p-8 text-center">
-        <svg className="mx-auto h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+      <div className="border border-[#0099ff]/20 bg-[#0099ff]/5 p-8 text-center">
+        <svg className="mx-auto h-12 w-12 text-[#0099ff]" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <h3 className="mt-4 text-lg font-semibold text-green-800">Application Submitted</h3>
-        <p className="mt-2 text-sm text-green-700">We will review your application and get back to you within 48 hours.</p>
+        <h3 className="mt-4 text-lg font-semibold text-[#121212]">Application Submitted</h3>
+        <p className="mt-2 text-sm text-[#4d4d4d]">We will review your application and get back to you within 48 hours.</p>
       </div>
     );
   }
@@ -69,22 +69,22 @@ export function DealerForm() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="dealer-name" className="block text-sm font-semibold text-gray-900">Full Name *</label>
-          <input type="text" id="dealer-name" name="name" required className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+          <input type="text" id="dealer-name" name="name" required className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
         </div>
         <div>
           <label htmlFor="dealer-phone" className="block text-sm font-semibold text-gray-900">Phone Number *</label>
-          <input type="tel" id="dealer-phone" name="phone" required className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+          <input type="tel" id="dealer-phone" name="phone" required className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="dealer-email" className="block text-sm font-semibold text-gray-900">Email</label>
-          <input type="email" id="dealer-email" name="email" className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+          <input type="email" id="dealer-email" name="email" className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
         </div>
         <div>
           <label htmlFor="dealer-city" className="block text-sm font-semibold text-gray-900">City / Region *</label>
-          <input type="text" id="dealer-city" name="city" required className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+          <input type="text" id="dealer-city" name="city" required className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
         </div>
       </div>
 
@@ -93,7 +93,7 @@ export function DealerForm() {
         <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
           {VERTICALS.map((v) => (
             <label key={v} className="flex items-center gap-2 text-sm text-gray-700">
-              <input type="checkbox" name="verticals" value={v} className="rounded border-gray-300 text-primary focus:ring-primary" />
+              <input type="checkbox" name="verticals" value={v} className="border-gray-300 text-primary focus:ring-primary" />
               {v}
             </label>
           ))}
@@ -107,7 +107,7 @@ export function DealerForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full rounded-md bg-accent px-8 py-3 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover transition-colors disabled:opacity-50 sm:w-auto"
+        className="w-full bg-accent px-8 py-3 text-sm font-semibold text-white hover:bg-accent-hover transition-colors disabled:opacity-50 sm:w-auto"
       >
         {status === "loading" ? "Submitting..." : "Submit Application"}
       </button>

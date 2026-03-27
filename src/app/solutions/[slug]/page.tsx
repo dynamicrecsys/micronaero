@@ -130,7 +130,7 @@ function OEMContent() {
 
       {/* MOQ Info */}
       <section className="mx-auto max-w-[1600px] px-4 py-20 lg:px-8">
-        <div className="border border-border bg-blue-50 p-8">
+        <div className="border border-border bg-[#0099ff]/5 p-8">
           <h2 className="text-xl font-bold uppercase tracking-wider">MINIMUM ORDER INFORMATION</h2>
           <p className="mt-3 text-sm text-[#4d4d4d]">
             We work with businesses of all sizes. Typical minimum order quantities start at 500 cans per SKU,
@@ -387,8 +387,8 @@ function MouldReleaseContent() {
                   ))}
                 </ul>
               </div>
-              <div className="mt-4 bg-blue-50 p-3">
-                <p className="text-sm font-bold text-blue-800">{c.useWhen}</p>
+              <div className="mt-4 bg-[#0099ff]/5 p-3">
+                <p className="text-sm font-bold text-[#1773b0]">{c.useWhen}</p>
               </div>
             </div>
           ))}

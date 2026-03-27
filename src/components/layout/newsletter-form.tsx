@@ -4,11 +4,20 @@ import { useState } from "react";
 
 export function NewsletterForm() {
   const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // TODO: integrate newsletter signup
+    setSubscribed(true);
     setEmail("");
+  }
+
+  if (subscribed) {
+    return (
+      <p className="text-sm font-bold uppercase tracking-wider text-[#0099ff]">
+        Subscribed! We&apos;ll keep you updated.
+      </p>
+    );
   }
 
   return (

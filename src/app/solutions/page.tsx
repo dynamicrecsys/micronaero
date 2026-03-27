@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -14,8 +15,11 @@ const solutions = [
     title: "OEM & Custom Formulation",
     description:
       "Partner with our R&D team for custom aerosol formulations. Private label and contract manufacturing available.",
+    image:
+      "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1600&q=80&auto=format&fit=crop",
+    imageAlt: "Industrial manufacturing floor with machinery",
     icon: (
-      <svg className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+      <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
       </svg>
     ),
@@ -25,8 +29,11 @@ const solutions = [
     title: "Conformal Coating Solutions",
     description:
       "IPC & MIL-spec conformal coatings for PCB protection. Protektor\u00AE brand range.",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80&auto=format&fit=crop",
+    imageAlt: "Circuit board close-up showing electronic components",
     icon: (
-      <svg className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+      <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
       </svg>
     ),
@@ -36,8 +43,11 @@ const solutions = [
     title: "Mould Release Solutions",
     description:
       "Silicone and non-silicone mould release agents for injection moulding, die casting, and rubber processing.",
+    image:
+      "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1600&q=80&auto=format&fit=crop",
+    imageAlt: "Industrial machinery in a manufacturing facility",
     icon: (
-      <svg className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+      <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25" />
       </svg>
     ),
@@ -67,21 +77,36 @@ export default function SolutionsPage() {
             <Link
               key={s.slug}
               href={`/solutions/${s.slug}`}
-              className="group flex flex-col border border-border p-8 transition-colors hover:border-primary"
+              className="group flex flex-col overflow-hidden border border-border transition-colors hover:border-primary"
             >
-              <div className="mb-4">{s.icon}</div>
-              <h2 className="text-xl font-bold uppercase tracking-wider text-heading group-hover:text-primary transition-colors">
-                {s.title}
-              </h2>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-[#4d4d4d]">
-                {s.description}
-              </p>
-              <span className="mt-6 inline-flex items-center text-sm font-bold uppercase tracking-wider text-primary group-hover:underline">
-                LEARN MORE
-                <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </span>
+              {/* Image area */}
+              <div className="relative h-56 overflow-hidden">
+                <Image
+                  src={s.image}
+                  alt={s.imageAlt}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-black/50 transition-colors group-hover:bg-black/40" />
+                <div className="absolute bottom-4 left-4">{s.icon}</div>
+              </div>
+
+              {/* Text area */}
+              <div className="flex flex-1 flex-col p-8">
+                <h2 className="text-xl font-bold uppercase tracking-wider text-heading group-hover:text-primary transition-colors">
+                  {s.title}
+                </h2>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-[#4d4d4d]">
+                  {s.description}
+                </p>
+                <span className="mt-6 inline-flex items-center text-sm font-bold uppercase tracking-wider text-primary group-hover:underline">
+                  LEARN MORE
+                  <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </span>
+              </div>
             </Link>
           ))}
         </div>

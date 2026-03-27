@@ -78,7 +78,7 @@ export default function BecomeADealerPage() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((b) => (
             <div key={b.title} className="border border-border p-6 text-center">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center bg-blue-50">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center bg-[#0099ff]/10">
                 {b.icon}
               </div>
               <h3 className="mt-4 text-sm font-bold uppercase tracking-wider text-heading">{b.title}</h3>

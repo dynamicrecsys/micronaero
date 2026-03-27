@@ -65,12 +65,12 @@ export function QuoteForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-green-200 bg-green-50 p-8 text-center">
-        <svg className="mx-auto h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+      <div className="border border-[#0099ff]/20 bg-[#0099ff]/5 p-8 text-center">
+        <svg className="mx-auto h-12 w-12 text-[#0099ff]" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <h3 className="mt-4 text-lg font-semibold text-green-800">Quote Request Received</h3>
-        <p className="mt-2 text-sm text-green-700">We will get back to you within 24 hours with competitive pricing.</p>
+        <h3 className="mt-4 text-lg font-semibold text-[#121212]">Quote Request Received</h3>
+        <p className="mt-2 text-sm text-[#4d4d4d]">We will get back to you within 24 hours with competitive pricing.</p>
       </div>
     );
   }
@@ -83,7 +83,7 @@ export function QuoteForm() {
         <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
           {Object.entries(SERIES_MAP).map(([code, info]) => (
             <label key={code} className="flex items-center gap-2 text-sm text-gray-700">
-              <input type="checkbox" name="products" value={code} className="rounded border-gray-300 text-primary focus:ring-primary" />
+              <input type="checkbox" name="products" value={code} className="border-gray-300 text-primary focus:ring-primary" />
               {code} &mdash; {info.name}
             </label>
           ))}
@@ -95,7 +95,7 @@ export function QuoteForm() {
         <label htmlFor="volume" className="block text-sm font-semibold text-gray-900">
           Estimated Monthly Volume
         </label>
-        <select id="volume" name="volume" className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary">
+        <select id="volume" name="volume" className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary">
           <option value="">Select volume range</option>
           {VOLUME_OPTIONS.map((v) => (
             <option key={v} value={v}>{v}</option>
@@ -107,38 +107,38 @@ export function QuoteForm() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="company" className="block text-sm font-semibold text-gray-900">Company Name</label>
-          <input type="text" id="company" name="company" className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+          <input type="text" id="company" name="company" className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
         </div>
         <div>
           <label htmlFor="name" className="block text-sm font-semibold text-gray-900">Contact Person *</label>
-          <input type="text" id="name" name="name" required className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+          <input type="text" id="name" name="name" required className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="phone" className="block text-sm font-semibold text-gray-900">Phone Number *</label>
-          <input type="tel" id="phone" name="phone" required className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+          <input type="tel" id="phone" name="phone" required className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
         </div>
         <div>
           <label htmlFor="email" className="block text-sm font-semibold text-gray-900">Email</label>
-          <input type="email" id="email" name="email" className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+          <input type="email" id="email" name="email" className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
         </div>
       </div>
 
       <div>
         <label htmlFor="city" className="block text-sm font-semibold text-gray-900">City / Region</label>
-        <input type="text" id="city" name="city" className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+        <input type="text" id="city" name="city" className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
       </div>
 
       <div>
         <label htmlFor="message" className="block text-sm font-semibold text-gray-900">Requirements / Message</label>
-        <textarea id="message" name="message" rows={4} className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+        <textarea id="message" name="message" rows={4} className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
       </div>
 
       <div>
         <label htmlFor="heard_from" className="block text-sm font-semibold text-gray-900">How did you hear about us?</label>
-        <select id="heard_from" name="heard_from" className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary">
+        <select id="heard_from" name="heard_from" className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-primary">
           <option value="">Select an option</option>
           {HEAR_OPTIONS.map((h) => (
             <option key={h} value={h}>{h}</option>
@@ -154,7 +154,7 @@ export function QuoteForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="rounded-md bg-accent px-8 py-3 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover transition-colors disabled:opacity-50"
+          className="bg-accent px-8 py-3 text-sm font-semibold text-white hover:bg-accent-hover transition-colors disabled:opacity-50"
         >
           {status === "loading" ? "Submitting..." : "Request Quote"}
         </button>

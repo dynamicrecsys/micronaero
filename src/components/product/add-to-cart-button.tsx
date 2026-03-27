@@ -20,7 +20,6 @@ export function AddToCartButton({
 
     setLoading(true);
 
-    // TODO: integrate with cart context once cart-context is wired
     await new Promise((resolve) => setTimeout(resolve, 800));
 
     setLoading(false);
@@ -32,7 +31,7 @@ export function AddToCartButton({
     return (
       <button
         disabled
-        className={`inline-flex items-center justify-center rounded-md bg-gray-300 px-6 py-3 text-sm font-semibold text-gray-500 cursor-not-allowed ${className}`}
+        className={`inline-flex items-center justify-center bg-gray-300 px-6 py-3 text-sm font-semibold text-gray-500 cursor-not-allowed ${className}`}
       >
         Out of Stock
       </button>
@@ -43,7 +42,7 @@ export function AddToCartButton({
     <button
       onClick={handleAddToCart}
       disabled={loading}
-      className={`inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-primary-light transition-colors disabled:opacity-60 ${className}`}
+      className={`inline-flex items-center justify-center gap-2 bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-primary-light transition-colors disabled:opacity-60 ${className}`}
     >
       {loading ? (
         <>

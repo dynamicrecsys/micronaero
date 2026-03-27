@@ -74,10 +74,10 @@ const BLOG_POSTS: BlogPost[] = [
 ];
 
 const CATEGORY_COLORS: Record<string, string> = {
-  "Conformal Coating": "bg-blue-900/10 text-blue-900",
-  "Mould Release": "bg-green-900/10 text-green-900",
-  Welding: "bg-orange-900/10 text-orange-900",
-  Industry: "bg-gray-900/10 text-gray-900",
+  "Conformal Coating": "bg-[#0099ff]/10 text-[#0099ff]",
+  "Mould Release": "bg-[#0099ff]/10 text-[#0099ff]",
+  Welding: "bg-[#0099ff]/10 text-[#0099ff]",
+  Industry: "bg-[#0099ff]/10 text-[#0099ff]",
 };
 
 function formatDate(dateStr: string) {

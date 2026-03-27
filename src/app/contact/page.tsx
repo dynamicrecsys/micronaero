@@ -21,7 +21,7 @@ const contactCards = [
       </svg>
     ),
     colorClass: "text-primary",
-    bgClass: "bg-blue-50",
+    bgClass: "bg-[#0099ff]/10",
   },
   {
     title: "EMAIL",
@@ -34,7 +34,7 @@ const contactCards = [
       </svg>
     ),
     colorClass: "text-primary",
-    bgClass: "bg-blue-50",
+    bgClass: "bg-[#0099ff]/10",
   },
   {
     title: "WHATSAPP",
@@ -49,7 +49,7 @@ const contactCards = [
       </svg>
     ),
     colorClass: "text-whatsapp",
-    bgClass: "bg-green-50",
+    bgClass: "bg-[#25d366]/10",
     external: true,
   },
 ];
