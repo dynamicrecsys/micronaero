@@ -37,43 +37,68 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
-        <div className="bg-white p-8">
-          <h1 className="text-lg font-bold tracking-[0.2em] uppercase text-[#0a0a0a] mb-1">
-            MICRON ADMIN
+        {/* Logo section */}
+        <div className="text-center mb-8">
+          <h1 className="text-[18px] font-bold tracking-[0.3em] uppercase text-white">
+            MICRON
           </h1>
-          <p className="text-xs text-[#4d4d4d] tracking-wider uppercase mb-8">
+          <p className="text-[10px] tracking-[0.2em] uppercase text-white/30 mt-1.5">
+            Admin Panel
+          </p>
+        </div>
+
+        {/* Login card */}
+        <div className="bg-white p-8">
+          <p className="text-[10px] font-semibold tracking-[0.15em] uppercase text-[#999] mb-6">
             Enter password to continue
           </p>
 
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
+            <div className="mb-5">
+              <label className="block text-[9px] font-semibold tracking-[0.15em] uppercase text-[#bbb] mb-2">
+                Password
+              </label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
+                placeholder="Enter admin password"
                 autoFocus
-                className="w-full px-4 py-3 border-2 border-[#0a0a0a] text-sm font-bold tracking-wider bg-white text-[#0a0a0a] placeholder:text-[#4d4d4d]/50 focus:outline-none focus:border-[#0099ff] transition-colors"
+                className="w-full px-4 py-3 border border-[#e5e5e5] text-[13px] tracking-wide bg-white text-[#0a0a0a] placeholder:text-[#ccc] focus:outline-none focus:border-[#0099ff] transition-colors"
               />
             </div>
 
             {error && (
-              <p className="text-xs font-bold tracking-wider uppercase text-[#e10000] mb-4">
-                {error}
-              </p>
+              <div className="bg-[#e10000]/5 border border-[#e10000]/20 px-3 py-2.5 mb-5">
+                <p className="text-[11px] font-semibold tracking-wider text-[#e10000]">
+                  {error}
+                </p>
+              </div>
             )}
 
             <button
               type="submit"
               disabled={loading || !password}
-              className="w-full py-3 bg-[#0a0a0a] text-white text-sm font-bold tracking-[0.2em] uppercase hover:bg-[#0099ff] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-[#0a0a0a] text-white text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-[#0099ff] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              {loading ? "Verifying..." : "Login"}
+              {loading ? (
+                <span className="inline-flex items-center gap-2">
+                  <span className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Verifying
+                </span>
+              ) : (
+                "Login"
+              )}
             </button>
           </form>
         </div>
+
+        {/* Footer */}
+        <p className="text-center text-[9px] tracking-[0.15em] uppercase text-white/20 mt-6">
+          Micron Aero Systems Pvt. Ltd.
+        </p>
       </div>
     </div>
   );

@@ -4,6 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import type { LeadStatus } from "@/types/lead";
 
+const STATUSES: { value: LeadStatus; label: string; color: string; activeBg: string }[] = [
+  { value: "new", label: "New", color: "#0099ff", activeBg: "bg-[#0099ff]" },
+  { value: "contacted", label: "Contacted", color: "#f59e0b", activeBg: "bg-[#f59e0b]" },
+  { value: "converted", label: "Converted", color: "#22c55e", activeBg: "bg-[#22c55e]" },
+];
+
 export function LeadStatusUpdater({
   leadId,
   currentStatus,
@@ -16,6 +22,7 @@ export function LeadStatusUpdater({
   const [saving, setSaving] = useState(false);
 
   async function handleChange(newStatus: LeadStatus) {
+    if (newStatus === status || saving) return;
     setStatus(newStatus);
     setSaving(true);
 
@@ -40,33 +47,32 @@ export function LeadStatusUpdater({
     }
   }
 
-  const statusStyles: Record<LeadStatus, string> = {
-    new: "border-[#0099ff] text-[#0099ff]",
-    contacted: "border-[#0a0a0a] text-[#0a0a0a]",
-    converted: "border-[#22c55e] text-[#22c55e]",
-  };
-
   return (
-    <div className="flex flex-col items-end gap-1">
-      <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#4d4d4d]">
-        Status
-      </p>
-      <div className="flex gap-1">
-        {(["new", "contacted", "converted"] as LeadStatus[]).map((s) => (
+    <div className="flex gap-1.5">
+      {STATUSES.map((s) => {
+        const isActive = status === s.value;
+        return (
           <button
-            key={s}
-            onClick={() => handleChange(s)}
+            key={s.value}
+            onClick={() => handleChange(s.value)}
             disabled={saving}
-            className={`px-3 py-1 text-[10px] font-bold tracking-wider uppercase border-2 transition-colors disabled:opacity-50 ${
-              status === s
-                ? `${statusStyles[s]} bg-current/5`
-                : "border-[#e5e5e5] text-[#4d4d4d] hover:border-[#0a0a0a]"
+            className={`flex-1 px-3 py-2 text-[10px] font-semibold tracking-[0.1em] uppercase transition-all disabled:opacity-60 ${
+              isActive
+                ? `${s.activeBg} text-white`
+                : "border border-[#e5e5e5] text-[#999] hover:border-[#999] hover:text-[#666]"
             }`}
           >
-            {s}
+            {saving && status === s.value ? (
+              <span className="inline-flex items-center gap-1">
+                <span className="w-2 h-2 border border-current border-t-transparent rounded-full animate-spin" />
+                Saving
+              </span>
+            ) : (
+              s.label
+            )}
           </button>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 }
